@@ -1,0 +1,97 @@
+if ARCH_S32
+
+config SYS_SOC
+	string
+	default "s32"
+
+config BAUDRATE
+	int "Serial baudrate"
+	default 115200
+
+choice
+	prompt "Select S32 Target Board Support"
+	default TARGET_S32V234EVB
+	help
+	  S32 Target Board Selection
+
+config TARGET_S32V234EVB
+	bool "Support s32v234evb"
+
+config TARGET_S32V234FVB
+	bool "Support s32v234fvb"
+
+config TARGET_S32V234PCIE
+	bool "Support s32v234pcie"
+
+config TARGET_S32V234TMDP
+	bool "Support s32v234tmdp"
+
+config TARGET_S32V344
+	bool "Support s32v344"
+
+config TARGET_S32R45X
+	bool "Support s32r45x"
+
+config TARGET_S32G275
+	bool "Support s32g275"
+
+config TARGET_MPXS32V234
+	bool "Support s32v234sbc"
+	select S32V234EVB_29288
+
+endchoice
+
+if TARGET_S32V234EVB
+
+choice
+	prompt "S32V234EVB Board Family Member"
+	default S32V234EVB_29288
+	help
+	  S32V234EVB Board Family Members
+
+config S32V234EVB_28899
+	bool "S32V234EVB_28899"
+
+config S32V234EVB_29288
+	bool "S32V234EVB_29288"
+
+config S32V234BBMINI_29406
+	bool "S32V234BBMINI_29406"
+
+endchoice
+
+endif
+
+choice
+	prompt "Select DDR type"
+	default S32_LPDDR2
+	help
+	  S32 DDR Configuration
+
+config S32_LPDDR2
+	bool "LPDDR2 Support"
+	help
+	  Enable the support for Micron LPDDR2
+
+config S32_LPDDR4
+	bool "LPDDR4 Support"
+	help
+	  Enable the support for Micron LPDDR4
+
+config S32_DDR3
+	bool "DDR3 Support"
+	help
+	  Enable the support for Micron DDR3
+
+endchoice
+
+config DDR_HANDSHAKE_AT_RESET
+	bool "Enable DDR handshake"
+	default y
+	help
+	  Enable DDR handshake after functional reset
+
+source "board/freescale/Kconfig"
+source "board/microsys/mpxs32v234/Kconfig"
+
+endif
