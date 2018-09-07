@@ -1291,7 +1291,7 @@ prepare: prepare0
 # ---------------------------------------------------------------------------
 
 define filechk_version.h
-	(echo \#define PLAIN_VERSION \"H1.0_U1.0_K1.0_R1.0\"; \
+	(echo \#define PLAIN_VERSION \"H1.0_U15.0_K15.0_S2.0\"; \
 	echo \#define U_BOOT_VERSION \"NXP_S32V_\" PLAIN_VERSION; \
 	echo \#define CC_VERSION_STRING \"$$($(CC) --version | head -n 1)\"; \
 	echo \#define LD_VERSION_STRING \"$$($(LD) --version | head -n 1)\"; )
