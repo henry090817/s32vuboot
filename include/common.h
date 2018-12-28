@@ -95,6 +95,8 @@ typedef volatile unsigned char	vu_char;
 #define CONFIG_SYS_SUPPORT_64BIT_DATA
 #endif
 
+//#define DEBUG  //for uboot log add and mask by henry@2018-12-22 
+
 #ifdef DEBUG
 #define _DEBUG	1
 #else

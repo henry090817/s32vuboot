@@ -223,7 +223,7 @@
 
 #endif /* #ifndef VIRTUAL_PLATFORM */
 
-#define CONFIG_BOOTDELAY	0
+#define CONFIG_BOOTDELAY	4
 
 #ifdef VIRTUAL_PLATFORM
 #define CONFIG_LOGLEVEL " loglevel=0 "

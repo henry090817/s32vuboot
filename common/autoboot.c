@@ -225,9 +225,9 @@ static int abortboot_normal(int bootdelay)
 
 #ifdef CONFIG_MENUPROMPT
 	printf(CONFIG_MENUPROMPT);
-//#else
-//	if (bootdelay >= 0)
-//		printf("Hit any key to stop autoboot: %2d ", bootdelay);
+#else
+	if (bootdelay >= 0)
+		printf("Hit any key to stop autoboot119: %2d ", bootdelay);
 #endif
 
 #if defined CONFIG_ZERO_BOOTDELAY_CHECK
@@ -321,7 +321,7 @@ const char *bootdelay_process(void)
 
 	s = getenv("bootdelay");
 	bootdelay = s ? (int)simple_strtol(s, NULL, 10) : CONFIG_BOOTDELAY;
-
+	bootdelay = CONFIG_BOOTDELAY;//add by henry@2018-12-22
 #ifdef CONFIG_OF_CONTROL
 	bootdelay = fdtdec_get_config_int(gd->fdt_blob, "bootdelay",
 			bootdelay);
@@ -358,7 +358,7 @@ void autoboot_command(const char *s)
 {
 	debug("### main_loop: bootcmd=\"%s\"\n", s ? s : "<UNDEFINED>");
 
-    if (stored_bootdelay != -1) { // && s && !abortboot(stored_bootdelay)) {
+    if (stored_bootdelay != -1 && s && !abortboot(stored_bootdelay)) {
 #if defined(CONFIG_AUTOBOOT_KEYED) && !defined(CONFIG_AUTOBOOT_KEYED_CTRLC)
 		int prev = disable_ctrlc(1);	/* disable Control C checking */
 #endif

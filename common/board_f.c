@@ -165,8 +165,8 @@ static int display_text_info(void)
 	debug("Modem Support enabled\n");
 #endif
 #ifdef CONFIG_USE_IRQ
-	debug("IRQ Stack: %08lx\n", IRQ_STACK_START);
-	debug("FIQ Stack: %08lx\n", FIQ_STACK_START);
+//	debug("IRQ Stack: %08lx\n", IRQ_STACK_START);//mask by henry@2018-12-222
+//	debug("FIQ Stack: %08lx\n", FIQ_STACK_START);//mask by henry@2018-12-22
 #endif
 
 	return 0;
